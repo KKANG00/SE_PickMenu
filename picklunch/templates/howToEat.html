@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi"/>
+<title> Pick Lunch Menu </title>
+<style type="text/css">
+*{margin:0;padding:0;}
+img,fieldset{border:0;} ul,ol,li{list-style-type:none;} li img{vertical-align:top;}
+
+body{margin:20px;}
+h1{font-size:80px;margin:70px 30px 100px 30px;}
+h2{font-size:75px;}
+p{font-size:12px;margin:10px 0;}
+
+.triangle{
+width: 0px; height:0px;
+border-right:1100px solid transparent;
+border-top:450px solid black; 
+margin-left:85px;
+}
+
+.triangle_content{
+position:absolute;
+top:45%;
+left:13%;
+text-align:right;
+z-index:1;
+color:white;
+font-size:45px;
+}
+
+.rotated_triangle{
+width:0px; height:0px;
+position:relative;
+border-left:1100px solid transparent;
+border-bottom:450px solid black;
+margin-top:-450px;
+margin-left:200px;
+}
+
+.rotated_triangle:before{
+content:"";
+width:0px; height:0px;
+position:absolute;
+border-left:1034px solid transparent;
+border-bottom:423px solid white;
+left: -1045px;
+top: 17px;
+}
+
+.rotated_triangle_content{
+position:absolute;
+top:65%;
+left:55%;
+text-align:center;
+z-index:1;
+color:black;
+font-size:45px;
+}
+
+</style>
+</head>
+
+<body>
+<h1>식사방법을 골라!</h1>
+<div class="triangle">
+<div class="triangle_content">
+<h2>배달음식 먹기</h2>
+</div>
+</div>
+<div class="rotated_triangle_content">
+<h2>식당 가서 먹기</h2>
+</div>
+<div class="rotated_triangle"></div>
+</body>
+</html>
