@@ -34,6 +34,17 @@ class STORE(db.Model):
       self.choice='X'
       self.delivery=delivery
 
+   def choiceO():
+   	  STORE_=STORE.query.all()
+   	  for i in STORE_:
+   	  	i.choice='O'
+
+   def choiceX():
+   	  STORE_=STORE.query.all()
+   	  for i in STORE_:
+   	  	i.choice='X'
+
+
 
 #db 업데이트되는 경우에만..? 음 엥 모르겟다
 #df = pd.read_csv('store_db.csv', encoding='CP949')
@@ -45,8 +56,8 @@ password = "dnflskfk"
 #메인화면루트
 @app.route("/")
 def main():
-	#return render_template('howToEat.html')
-	return render_template('list.html',STORELIST=STORE.query.order_by("category").all())
+	return render_template('howToEat.html')
+	#return render_template('list.html',STORELIST=STORE.query.order_by("category").all())
 
 @app.route("/delivery/howtochoose")
 def delichoose():
@@ -58,19 +69,23 @@ def gotochoose():
 
 @app.route("/goto/without")
 def gotowithout():
+	STORE.choiceO()
 	return render_template('listgw.html', STORELIST=STORE.query.order_by("category").all())
 
 @app.route("/goto/like")
 def gotolike():
+	STORE.choicex()
 	return render_template('listgl.html', STORELIST=STORE.query.order_by("category").all())
 
 @app.route("/delivery/without")
 def deliverywithout():
-	return render_template('listdw.html', STORELIST=STORE.query.order_by("category").filter_by(delivery=True).all())
+	STORE.choiceO()
+	return render_template('listdw.html', STORELIST=STORE.query.order_by("category").filter_by(delivery='O').all())
 
 @app.route("/delivery/like")
 def deliverylike():
-	return render_template('listdl.html', STORELIST=STORE.query.order_by("category").filter_by(delivery=True).all())
+	STORE.choiceX()
+	return render_template('listdl.html', STORELIST=STORE.query.order_by("category").filter_by(delivery='O').all())
 
 @app.route("/login")
 def login():
@@ -138,6 +153,15 @@ def edit(name):
    db.session.commit()
    return redirect("/")
 
+@app.route("/choice/<id>")
+def choice(id):
+  des=STORE.query.get(id)
+  if des.choice=="O":
+     des.choice="X"
+  else :
+     des.choice="O"
+  db.session.commit()
+  return redirect("/")
 
 if __name__ == "__main__" :
    db.create_all()
