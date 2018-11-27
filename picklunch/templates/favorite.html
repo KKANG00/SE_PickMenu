@@ -162,7 +162,7 @@ background-size: cover;
 
               {%- for i in FAVORITE %}<!--favorite에 있는 연락차 목록만큼 반복-->
               <th scope="row">
-              <a href="/favorite/{{i.id}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
+              <a href="/favorite/{{i.name}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
               <a href = "#{{i.name}}" class="btn-example" onclick="layer_open('{{i.name}}'); return false;" > {{i.name }}</a>
               <!--즐겨찾기 창에서 이름을 누르면 연락처를 상세하게 볼 수 있다.-->
               <div id="{{i.name}}" class="pop-layer" >
@@ -178,7 +178,7 @@ background-size: cover;
                                         <div class="pop-container">
                                                <div class="pop-conts" >연락처 수정<br><br>
                                                     <!--content //-->
-                                                 <form action="/edit/{{i.id}}" method="POST">
+                                                 <form action="/edit/{{i.name}}" method="POST">
                                                      <input type="text" name="name" value="{{ i.name }}" style="margin-right: 30px; margin-top: 30px"><br>
                                                      <input type="text" name="number" value="{{ i.number }}" style="margin-right: 30px"><br>
                                                      <input type="text" name="email" value="{{ i.email }}" style="margin-right:30px"><br>

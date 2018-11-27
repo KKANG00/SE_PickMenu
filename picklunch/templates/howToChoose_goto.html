@@ -9,23 +9,32 @@ img,fieldset{border:0;} ul,ol,li{list-style-type:none;} li img{vertical-align:to
 
 body{margin:20px;}
 h1{font-size:80px;margin:70px 30px 100px 30px;}
-h2{font-size:75px;}
 p{font-size:12px;margin:10px 0;}
 
 .triangle{
 width: 0px; height:0px;
 border-right:1100px solid transparent;
-border-top:450px solid black; 
+border-bottom:450px solid black; 
 margin-left:85px;
+}
+
+.triangle:before{
+content:"";
+width:0px; height:0px;
+position:absolute;
+border-right:1034px solid transparent;
+border-bottom:423px solid white;
+bottom: 115px;
+left: 115px;
 }
 
 .triangle_content{
 position:absolute;
-top:45%;
-left:13%;
+top:62%; 
+left:12%;
 text-align:right;
 z-index:1;
-color:white;
+color:black;
 font-size:45px;
 }
 
@@ -33,28 +42,18 @@ font-size:45px;
 width:0px; height:0px;
 position:relative;
 border-left:1100px solid transparent;
-border-bottom:450px solid black;
+border-top:450px solid black;
 margin-top:-450px;
 margin-left:200px;
 }
 
-.rotated_triangle:before{
-content:"";
-width:0px; height:0px;
-position:absolute;
-border-left:1034px solid transparent;
-border-bottom:423px solid white;
-left: -1045px;
-top: 17px;
-}
-
 .rotated_triangle_content{
 position:absolute;
-top:65%;
-left:55%;
+top:40%;
+left:45%;
 text-align:center;
 z-index:1;
-color:black;
+color:white;
 font-size:45px;
 }
 
@@ -62,15 +61,17 @@ font-size:45px;
 </head>
 
 <body>
-<h1>식사방법을 골라!</h1>
+<h1>선택방법을 골라!</h1>
 <div class="triangle">
 <div class="triangle_content">
-<a href = "/delivery/howtochoose" class="btn-example"> 배달음식 먹기</a>
+<a href = "/goto/without" class="btn-example"> 싫어하는 음식빼고 고르기</a>
 </div>
+</div>
+<div class="rotated_triangle">
 </div>
 <div class="rotated_triangle_content">
-<a href = "/goto/howtochoose" class="btn-example" > 식당가서 먹기</a>
+<a href = "/goto/like" class="btn-example"> 좋아하는 음식중에 고르기</a>
 </div>
-<div class="rotated_triangle"></div>
+
 </body>
 </html>
