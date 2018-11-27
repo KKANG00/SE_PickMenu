@@ -48,7 +48,7 @@ function layer_open(el){
 window.onload=function heart(){
   var obj=document.getElementsByName('favoriticon');
   for(var i=0;i<obj.length;i++){
-    if(obj[i].title=="♡"){
+    if(obj[i].title=="X"){
       obj[i].className="fa fa-heart-o";
     }
     else{
@@ -142,7 +142,7 @@ background-size: cover;
 
               {%- for i in STORELIST %} <!--음식점 목록의 개수만큼 반복-->
               <th scope="row">
-              <a href="/favorite/{{i.name}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
+              <a href="/choice/goto/without/{{i.name}}"  title = "{{i.choice}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
               <a href = "#{{i.name}}" class="btn-example" onclick="layer_open('{{i.name}}'); return false;" > {{i.name }}</a>
               <div id="{{i.name}}" class="pop-layer" ><!--이름을 누르면 음식점를 자세하게 볼 수 있다-->
                    <div class="pop-container">
@@ -164,7 +164,7 @@ background-size: cover;
                                                      <input type="text" name="delivery" value="{{ i.delivery }}" style="margin-right:30px"><br>
                                                      <input type="text" name="address" value="{{ i.address }}" style="margin-right:30px"><br>
                                                       <input type="text" name="category" value="{{ i.category }}" style="margin-right:30px"><br>
- 
+
                                                      <div class="btn-r">
                                                      <input style="width:50px" type="submit" value="저장">
                                                      <a class="btn-layerClose">닫기</a>

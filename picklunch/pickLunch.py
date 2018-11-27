@@ -67,25 +67,29 @@ def delichoose():
 def gotochoose():
 	return render_template('howToChoose_goto.html')
 
-@app.route("/goto/without")
-def gotowithout():
-	STORE.choiceO()
-	return render_template('listgw.html', STORELIST=STORE.query.order_by("category").all())
+@app.route("/goto/without/<int:check>")
+def gotowithout(check):
+    if check==0:
+        STORE.choiceO()
+    return render_template('listgw.html', STORELIST=STORE.query.order_by("category").all())
 
-@app.route("/goto/like")
-def gotolike():
-	STORE.choicex()
-	return render_template('listgl.html', STORELIST=STORE.query.order_by("category").all())
+@app.route("/goto/like/<int:check>")
+def gotolike(check):
+    if check ==0:
+        STORE.choiceX()
+    return render_template('listgl.html', STORELIST=STORE.query.order_by("category").all())
 
-@app.route("/delivery/without")
-def deliverywithout():
-	STORE.choiceO()
-	return render_template('listdw.html', STORELIST=STORE.query.order_by("category").filter_by(delivery='O').all())
+@app.route("/delivery/without/<int:check>")
+def deliverywithout(check):
+    if check == 0:
+        STORE.choiceO()
+    return render_template('listdw.html', STORELIST=STORE.query.order_by("category").filter_by(delivery='O').all())
 
-@app.route("/delivery/like")
-def deliverylike():
-	STORE.choiceX()
-	return render_template('listdl.html', STORELIST=STORE.query.order_by("category").filter_by(delivery='O').all())
+@app.route("/delivery/like/<int:check>")
+def deliverylike(check):
+    if check==0 :
+        STORE.choiceX()
+    return render_template('listdl.html', STORELIST=STORE.query.order_by("category").filter_by(delivery='O').all())
 
 @app.route("/login")
 def login():
@@ -116,7 +120,9 @@ def new():
 #@app.route("/favorite")
 #def show_favorite():
 #   return render_template('favorite.html',contact_count=PERSON.query.filter_by(deleted=False).count(),FAVORITE=PERSON.query.filter_by(favorite='¢¾').order_by("name"),trashcount=PERSON.query.filter_by(deleted=True).count())
-
+@app.route("/choice")
+def show_choice():
+  return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by("category").all())
 
 @app.route("/delete/<name>")
 def delete(name):
@@ -125,15 +131,15 @@ def delete(name):
 	db.session.commit()
 	return redirect("/")
 
-# # @app.route("/favorite/<id>")
-# # def favorite(id):
-# #   favorite=PERSON.query.get(id)
-# #   if favorite.favorite=="¢¾":
-# #      favorite.favorite="¢½"
-# #   else :
-# #      favorite.favorite="¢¾"
-# #   db.session.commit()
-# #   return redirect("/")
+@app.route("/choice/<deli>/<lw>/<name>")
+def choice(deli, lw, name):
+  des=STORE.query.get(name)
+  if des.choice=="O":
+     des.choice="X"
+  else :
+     des.choice="O"
+  db.session.commit()
+  return redirect("/"+deli+"/"+lw+"/"+str(1))
 
 # @app.route("/search", methods=['POST'])
 # def search():
@@ -153,15 +159,7 @@ def edit(name):
    db.session.commit()
    return redirect("/")
 
-@app.route("/choice/<id>")
-def choice(id):
-  des=STORE.query.get(id)
-  if des.choice=="O":
-     des.choice="X"
-  else :
-     des.choice="O"
-  db.session.commit()
-  return redirect("/")
+
 
 if __name__ == "__main__" :
    db.create_all()
