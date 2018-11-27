@@ -155,7 +155,7 @@ background-size: cover;
               <td style="background:#f5f5f5;font-weight: bold">전화번호</td> </tr>
               {%- for i in namesearch %}
               <th scope="row">
-              <a href="/favorite/{{i.id}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
+              <a href="/favorite/{{i.name}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
               <a href = "#{{i.name}}" class="btn-example" onclick="layer_open('{{i.name}}'); return false;" > {{i.name }}</a>
               <div id="{{i.name}}" class="pop-layer" >
                    <div class="pop-container">
@@ -171,7 +171,7 @@ background-size: cover;
                                         <div class="pop-container">
                                               <div class="pop-conts" >연락처 수정<br><br>
                                                     <!--content //-->
-                                                 <form class="edit-popup" action="/edit/{{i.id}}" method="POST">
+                                                 <form class="edit-popup" action="/edit/{{i.name}}" method="POST">
                                                      <input type="text" name="name" value="{{ i.name }}" style="margin-right: 30px; margin-top: 30px"><br>
                                                      <input type="text" name="number" value="{{ i.number }}" style="margin-right: 30px"><br>
                                                      <input type="text" name="email" value="{{ i.email }}" style="margin-right:30px"><br>
@@ -211,7 +211,7 @@ background-size: cover;
               <td style="background:#f5f5f5;font-weight: bold">전화번호</td> </tr>
               {%- for i in numbersearch %}
               <th scope="row">
-              <a href="/favorite/{{i.id}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
+              <a href="/favorite/{{i.name}}"  title = "{{i.favorite}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
               <a href = "#{{i.name}}" class="btn-example" onclick="layer_open('{{i.name}}'); return false;" > {{i.name }}</a>
               <div id="{{i.name}}" class="pop-layer" >
                    <div class="pop-container">
