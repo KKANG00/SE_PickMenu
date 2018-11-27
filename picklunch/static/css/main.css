@@ -317,3 +317,36 @@ div form input{
   font-size: 16px;
   outline: none;
 }
+
+.button_base {
+    margin: 0;
+    border: 0;
+    font-size: 25px;
+    position: relative;
+    margin-top: 200px;
+    margin-left: 1100px;
+    width: 200px;
+    height: 70px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.button_base:hover {
+    cursor: pointer;
+}
+
+.b01_simple_rollover {
+    color: #000000;
+    border: #000000 solid 1px;
+    padding: 20px 0px;
+    background-color: #ffffff;
+}
+
+.b01_simple_rollover:hover {
+    color: #ffffff;
+    background-color: #000000;
+}
