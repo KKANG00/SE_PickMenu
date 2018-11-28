@@ -68,9 +68,6 @@ a{margin-left:10px;}
 
 <input type="checkbox" id="menu_state" checked>
 
-<a href="/new" onclick="layer_open('add'); return false;"><!--음식점 추가-->
-   <i class="fa fa-plus"></i>
-   <span>Plus</span></a>
 <main>
    <header></header>
 
@@ -98,39 +95,7 @@ background-size: cover;
         <table class="contact_list">
 
         <thead><p style="font-weight: bold; font-size: 17px; margin-left: 30px; margin-top: 20px">음식점</p><!--페이지 제목-->
-        <div id="add" class="pop-layer" ><!--음식점 추가 팝업-->
-                        <div class="pop-container">
-                            <div class="pop-conts" >음식점 추가하기<br><br>
 
-                      <form action='/new'  method='POST'>
-                        <div>
-                          <label for='name'>이름 :</label>
-                          <input type='text' id='name' name='name'><br>
-                        </div>
-                        <div>
-                          <label for="address">사이트주소 :</label>
-                          <input type="text" id="address" name="address"><br>
-                        </div>
-                        <div>
-                          <label for="delivery">배달가능 :</label>
-                          <input type="text" id="delivery" name="delivery"><br>
-                        </div>
-                        <div>
-                          <label for="number">전화번호 :</label>
-                          <input type="text" id="number" name="number"><br>
-                        </div>
-                        <div>
-                          <label for="category">분류 :</label>
-                          <input type="category" id="category" name="category">
-                          <input type="submit" value="추가" style="font-weight: bold; color: #ffffff;font-size: 15px; background-color : #336699; border:1px solid #333366; padding :3px">
-                          <a href="#" class="btn-layerClose">닫기</a>
-                        </div>
-                            </form>
-
-                  <!--// content-->
-                    </div>
-                </div>
-          </div>
 
         </thead>
 
@@ -151,28 +116,7 @@ background-size: cover;
     <p class = "ctxt mb20">이름: {{ i.name }}<br>전화번호: {{ i.number }}<br>사이트:<a href="{{i.address}}" >{{i.address}}</a><br>분류: {{i.category}}<br>배달여부: {{i.delivery}}<br>
                               </p>
 
-                               <div class="btn-r">
-                                   <a href="/delete/{{i.name}}">삭제하기</a>
-                                   <a href="#{{i.name}}edit" class="btn-layerEdit">수정하기</a><!--버튼 중 수정하기 버튼을 누르면 음식점를 수정하는 팝업이 뜬다.-->
-                                         <div id="{{i.name}}edit" class="pop-layer" >
-                                        <div class="pop-container">
-                                              <div class="pop-conts" >음식점 수정<br><br>
-                                                    <!--content //-->
-                                                 <form class="edit-popup" action="/edit/{{i.name}}" method="POST">
-                                                     <input type="text" name="name" value="{{ i.name }}" style="margin-right: 30px; margin-top: 30px"><br>
-                                                     <input type="text" name="number" value="{{ i.number }}" style="margin-right: 30px"><br>
-                                                     <input type="text" name="delivery" value="{{ i.delivery }}" style="margin-right:30px"><br>
-                                                     <input type="text" name="address" value="{{ i.address }}" style="margin-right:30px"><br>
-                                                      <input type="text" name="category" value="{{ i.category }}" style="margin-right:30px"><br>
-
-                                                     <div class="btn-r">
-                                                     <input style="width:50px" type="submit" value="저장">
-                                                     <a class="btn-layerClose">닫기</a>
-                                                     </div>
-                                                 </form>>
-                                                </div>
-                                            </div>
-                                      </div>
+                               <div class="btn-r">                                   
                                    <a href="#" class="btn-layerClose">닫기</a>
                                </div>
 
