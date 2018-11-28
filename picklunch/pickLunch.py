@@ -128,14 +128,10 @@ def show_result(count):
     if(count<=3):
         CHOICE = STORE.query.filter_by(choice='O').all()
         lenth = len(CHOICE)
-        ran = random.randrange(1,lenth+1)
-        idx =0
-        for i in CHOICE:
-            idx +=1
-            if(idx==ran):
-                result_choice = i.name
+        ran = random.randrange(1,lenth)
+        result_choice = CHOICE[ran]
     else:
-        result_choice = 'X'
+        flash('No more chance to pick lunch','error')
     return render_template('result.html',result_choice = result_choice)
 
 @app.route('/delete/<name>')

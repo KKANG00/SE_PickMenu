@@ -2,8 +2,8 @@
 <html lang="kr">
    <head>
    <meta charset="UTF-8">
-   
-   
+
+
      <title>Addressbook</title>
      <link rel="shortcut icon" href="https://lh3.googleusercontent.com/sHMKgiee-dwZHonhBF-7b4e9y7eXXk1_yxIeVoxJ3jj0IpAPil66SeI6qTz88iuK_Q=w300" />
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
@@ -23,7 +23,7 @@ function layer_open(el){
         docWidth = $(document).width(),
         docHeight = $(document).height();
       //bg 클래스가 없으면 일반레이어로 실행한다.
-                       
+
       // 화면의 중앙에 레이어를 띄운다.
         if ($elHeight < docHeight || $elWidth < docWidth) {
             $el.css({
@@ -49,7 +49,7 @@ window.onload=function heart(){
       obj[i].className="fa fa-heart";
     }
   }
-}    
+}
 </script>
 
 <style>
@@ -93,7 +93,7 @@ a{margin-left:10px;}
          <a href="/new" onclick="layer_open('add'); return false;">
             <i class="fa fa-plus"></i>
             <span>Plus</span></a>
-      </li> 
+      </li>
 
    </ul>
 </nav>
@@ -104,7 +104,7 @@ a{margin-left:10px;}
 body
 {
 background: url(https://static.pexels.com/photos/255527/pexels-photo-255527.jpeg)
- no-repeat center center fixed; 
+ no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -165,7 +165,7 @@ background-size: cover;
                               </p>
 
                                <div class="btn-r">
-                                   <a href="/delete/{{i.name}}">삭제하기</a>  
+                                   <a href="/delete/{{i.name}}">삭제하기</a>
                                    <a href="#{{i.name}}edit" class="btn-layerEdit">수정하기</a>
                                          <div id="{{i.name}}edit" class="pop-layer" >
                                         <div class="pop-container">
@@ -176,7 +176,7 @@ background-size: cover;
                                                      <input type="text" name="number" value="{{ i.number }}" style="margin-right: 30px"><br>
                                                      <input type="text" name="email" value="{{ i.email }}" style="margin-right:30px"><br>
                                                      <div class="btn-r">
-                                                     <input style="width:50px" type="submit" value="Save">  
+                                                     <input style="width:50px" type="submit" value="Save">
                                                      <a class="btn-layerClose">닫기</a>
                                                      </div>
                                                  </form>>
@@ -192,8 +192,8 @@ background-size: cover;
                            </div>
                        </div>
                 </div>
-                
-              
+
+
               </th>
               <td>{{ i.number }}</td>
           </tr>
@@ -221,7 +221,7 @@ background-size: cover;
                               </p>
 
                                <div class="btn-r">
-                                   <a href="/delete/{{i.name}}">삭제하기</a>  
+                                   <a href="/delete/{{i.name}}">삭제하기</a>
                                    <a href="#{{i.name}}edit" class="btn-layerEdit">수정하기</a>
                                          <div id="{{i.name}}edit" class="pop-layer" >
                                         <div class="pop-container">
@@ -232,7 +232,7 @@ background-size: cover;
                                                      <input type="text" name="number" value="{{ i.number }}" style="margin-right: 30px"><br>
                                                      <input type="text" name="email" value="{{ i.email }}" style="margin-right:30px"><br>
                                                      <div class="btn-r">
-                                                     <input style="width:50px" type="submit" value="Save">  
+                                                     <input style="width:50px" type="submit" value="Save">
                                                      <a class="btn-layerClose">닫기</a>
                                                      </div>
                                                  </form>>
@@ -248,8 +248,8 @@ background-size: cover;
                            </div>
                        </div>
                 </div>
-                
-              
+
+
               </th>
               <td>{{ i.number }}</td>
           </tr>
