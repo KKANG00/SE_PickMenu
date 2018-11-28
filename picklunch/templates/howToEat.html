@@ -6,6 +6,7 @@
      <link rel="shortcut icon" href="https://lh3.googleusercontent.com/sHMKgiee-dwZHonhBF-7b4e9y7eXXk1_yxIeVoxJ3jj0IpAPil66SeI6qTz88iuK_Q=w300" />
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css')}}"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
@@ -51,7 +52,7 @@ h2{font-size:75px;}
 .triangle{
 width: 0px; height:0px;
 border-right:1100px solid transparent;
-border-top:450px solid black; 
+border-top:450px solid black;
 margin-left:85px;
 }
 
@@ -114,29 +115,36 @@ font-size:45px;
 }
 
 </style>
+
 </head>
 
 <body>
 <h1>식사방법을 골라!</h1>
-
-<div class="button b01" style="width:140px; margin-bottom:50px; margin-left:430px" >
-    <a href="/login" onclick="layer_open('login'); return false;">관리자 로그인</div>
-
-        <div id="login" class="pop-layer" ><!--음식점 추가 팝업-->
+<!-- <div class="button b01" style="width:140px; margin-left:430px" > -->
+    <a href="#manager_login" class = "btn-example" onclick="layer_open('manager_login'); return false;">관리자 로그인</a>
+        <div id="manager_login" class="pop-layer" ><!--음식점 추가 팝업-->
             <div class="pop-container">
                 <div class="pop-conts" >관리자 로그인<br><br>
                     <form action='/login'  method='POST'>
-                        <div>
+                        <p class = "ctxt mb20">
                             <label for='password'>패스워드 :</label>
                             <input type='text' id='password' name='password'><br>
-                        </div>
+
+                        </p>
                         <input type="submit" value="로그인" style="font-weight: bold; color: #ffffff;font-size: 15px; background-color : #336699; border:1px solid #333366; padding :3px">
-                        <a href="#" class="btn-layerClose">닫기</a>
+                        <div class="btn-r">
+                            <a href="#" class="btn-layerClose">닫기</a>
+                        </div>
                     </div>
                 </form>
                 </div>
             </div>
-        </div>
+
+
+
+
+
+
 
 <div class="triangle">
 <div class="triangle_content">

@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 import csv
 import pandas as pd
+import random
 
 
 app = Flask(__name__)
@@ -117,9 +118,25 @@ def AddInfo():
 #@app.route('/favorite')
 #def show_favorite():
 #   return render_template('favorite.html',contact_count=PERSON.query.filter_by(deleted=False).count(),FAVORITE=PERSON.query.filter_by(favorite='¢¾').order_by('name'),trashcount=PERSON.query.filter_by(deleted=True).count())
-#@app.route('/choice')
-#def show_choice():
-#  return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+@app.route('/choice')
+def show_choice():
+ return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+
+@app.route('/result/<count>')
+def show_result(count):
+    count = int(count)
+    if(count<=3):
+        CHOICE = STORE.query.filter_by(choice='O').all()
+        lenth = len(CHOICE)
+        ran = random.randrange(1,lenth+1)
+        idx =0
+        for i in CHOICE:
+            idx +=1
+            if(idx==ran):
+                result_choice = i.name
+    else:
+        result_choice = 'X'
+    return render_template('result.html',result_choice = result_choice)
 
 @app.route('/delete/<name>')
 def DeleteInfo(name):
