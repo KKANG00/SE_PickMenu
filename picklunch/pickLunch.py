@@ -6,7 +6,6 @@ import csv
 import pandas as pd
 import random
 
-
 app = Flask(__name__)
 
 #데이터 베이스 생성
@@ -41,14 +40,23 @@ class STORE(db.Model):
    	  	i.choice=ox
    	  db.session.commit()
 
+class MANAGER():
+	password = 'dnflskfk'
 
+	def __init__(self, password):
+		self.password=password
 
-#db 업데이트되는 경우에만..? 음 엥 모르겟다
+	def getpw(self):
+		return self.password
+
+#엑셀 데이터 동기화
 #df = pd.read_csv('store_db.csv', encoding='CP949')
 #engine = create_engine('sqlite:///storedata.db')
 #df.to_sql('STORE', con=engine, if_exists='replace')
 
-password = 'dnflskfk'
+#매니저 객체
+M=MANAGER('dnflskfk')
+
 
 #메인화면루트
 @app.route('/')
@@ -57,6 +65,9 @@ def SetUserDelivery():
 	return render_template('howToEat.html')
 	#return render_template('list.html',STORELIST=STORE.query.order_by('category').all())
 
+#<사용자 모드>
+
+#식사방법고르기
 @app.route('/<howtoeat>/howtochoose')
 def SetUertChoice(howtoeat):
 	if(howtoeat=='delivery'):
@@ -64,7 +75,7 @@ def SetUertChoice(howtoeat):
 	elif(howtoeat=='goto'):
 		return render_template('howToChoose_goto.html')
 
-
+#선택방법고르기
 @app.route('/<eat>/<choose>/<check>')
 def fourcases(eat, choose, check):
 	if(eat=='goto'):
@@ -86,21 +97,52 @@ def fourcases(eat, choose, check):
 				STORE.SetStore('O')
 			return render_template('listdw.html', STORELIST=STORE.query.order_by('category').filter_by(delivery='O').all())
 
+@app.route('/choice/<deli>/<lw>/<name>')
+def Select(deli, lw, name):
+  des=STORE.query.get(name)
+  if des.choice=='O':
+     des.choice='X'
+  else :
+     des.choice='O'
+  db.session.commit()
+  return redirect('/'+deli+'/'+lw+'/pass')
 
-@app.route('/login')
+@app.route('/choice')
+def MakeList():
+	return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+
+@app.route('/result/<count>')
+def PickRandomStore(count):
+    count = int(count)
+    if(count<=3):
+        CHOICE = STORE.query.filter_by(choice='O').all()
+        lenth = len(CHOICE)
+        ran = random.randrange(1,lenth)
+        result_choice = CHOICE[ran]
+        result_choice.choice = 'X'
+        db.session.commit()
+    else:
+        flash('No more chance to pick lunch','error')
+    return render_template('result.html',result_choice = result_choice)
+
+
+#<매니저 모드>
+
+#로그인루트
+@app.route('/login', methods=['GET', 'POST'])
 def Login():
-	if request.methods == 'POST':
+	if request.method == 'POST':
 		if not request.form['password']:
 			flash('Please enter password', 'error')
 			return redirect("/")
-		if password==request.form['password']:
-			return render_template('manage_list.html')
+		if M.getpw()==request.form['password']:
+			return redirect("/manager")
+		return redirect("/")
 
-@app.route('/list')
+@app.route('/manager')
 def ShowInfo():
-	return render_template('list.html', STORELIST=STORE.query.order_by('category').all())
+	return render_template('manage_list.html', STORELIST=STORE.query.order_by('category').all())
 
-#추가화면 루트
 @app.route('/new', methods=['GET', 'POST'])
 def AddInfo():
     if request.method == 'POST':
@@ -112,51 +154,14 @@ def AddInfo():
           NEW=STORE(request.form['name'],request.form['address'],request.form['delivery'],request.form['number'],request.form['category'])
           db.session.add(NEW)
           db.session.commit()
-       return redirect('/')
-
-
-#@app.route('/favorite')
-#def show_favorite():
-#   return render_template('favorite.html',contact_count=PERSON.query.filter_by(deleted=False).count(),FAVORITE=PERSON.query.filter_by(favorite='¢¾').order_by('name'),trashcount=PERSON.query.filter_by(deleted=True).count())
-@app.route('/choice')
-def show_choice():
- return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
-
-@app.route('/result/<count>')
-def show_result(count):
-    count = int(count)
-    if(count<=3):
-        CHOICE = STORE.query.filter_by(choice='O').all()
-        lenth = len(CHOICE)
-        ran = random.randrange(1,lenth)
-        result_choice = CHOICE[ran]
-    else:
-        flash('No more chance to pick lunch','error')
-    return render_template('result.html',result_choice = result_choice)
+       return redirect('/manager')
 
 @app.route('/delete/<name>')
 def DeleteInfo(name):
 	deleted=STORE.query.filter_by(name=name)
 	deleted.delete()
 	db.session.commit()
-	return redirect('/')
-
-@app.route('/choice/<deli>/<lw>/<name>')
-def Select(deli, lw, name):
-  des=STORE.query.get(name)
-  if des.choice=='O':
-     des.choice='X'
-  else :
-     des.choice='O'
-  db.session.commit()
-  return redirect('/'+deli+'/'+lw+'/pass')
-
-# @app.route('/search', methods=['POST'])
-# def search():
-#    string=request.form['string']
-#    return render_template('search.html', namesearch=PERSON.query.filter_by(name=string, deleted=False).order_by('name').all(),
-#    numbersearch=PERSON.query.filter_by(number=string, deleted=False).order_by('name').all(),contact_count=PERSON.query.filter_by(deleted=False).count(),trashcount=PERSON.query.filter_by(deleted=True).count())
-
+	return redirect('/manager')
 
 @app.route('/edit/<name>', methods=['POST'])
 def ChangeInfo(name):
@@ -167,8 +172,7 @@ def ChangeInfo(name):
    edited.email=request.form['address']
    edited.email=request.form['category']
    db.session.commit()
-   return redirect('/')
-
+   return redirect('/manager')
 
 
 if __name__ == '__main__' :
