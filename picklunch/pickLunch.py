@@ -50,9 +50,9 @@ class MANAGER():
 		return self.password
 
 #엑셀 데이터 동기화
-# df = pd.read_csv('store_db.csv', encoding='CP949')
-# engine = create_engine('sqlite:///storedata.db')
-# df.to_sql('STORE', con=engine, if_exists='replace')
+#df = pd.read_csv('store_db.csv', encoding='CP949')
+#engine = create_engine('sqlite:///storedata.db')
+#df.to_sql('STORE', con=engine, if_exists='replace')
 
 #매니저 객체
 M=MANAGER('dnflskfk')
@@ -110,9 +110,17 @@ def Select(deli, lw, name):
 @app.route('/<deli>/choice')
 def MakeList(deli):
 	if deli=='deli':
-		return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O', delivery='O').order_by('category').all())
+		CHOICE=STORE.query.filter_by(choice='O', delivery='O').order_by('category').all()
+		lenth = len(CHOICE)
+		if lenth==0:
+			return render_template('moreThanOne.html')
+		return render_template('choice.html',CHOICE=CHOICE)
 	elif deli=='goto':
-		return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+		CHOICE=STORE.query.filter_by(choice='O').order_by('category').all()
+		lenth = len(CHOICE)
+		if lenth==0:
+			return render_template('moreThanOne.html')
+		return render_template('choice.html',CHOICE=CHOICE)
 	else:
 		return redirect('/')
 
@@ -122,8 +130,6 @@ def PickRandomStore(count):
     if(count<3):
         CHOICE = STORE.query.filter_by(choice='O').all()
         lenth = len(CHOICE)
-        if lenth==0:
-            return render_template('moreThanOne.html')
         ran = random.randrange(0,lenth)
         result_choice = CHOICE[ran]
     else:
@@ -142,7 +148,7 @@ def Login():
 			return redirect("/")
 		if M.getpw()==request.form['password']:
 			return redirect("/manager")
-		return "비밀번호를 다시 입력하세요(뒤로 돌아가세요)"
+		return "비밀번호를 다시 입력하세요 (뒤로 돌아가세요)"
 
 
 
