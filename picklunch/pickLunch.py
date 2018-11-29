@@ -111,15 +111,15 @@ def Select(deli, lw, name):
 def MakeList(deli):
 	if deli=='deli':
 		return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O', delivery='O').order_by('category').all())
-	elif deli=='goto': 
+	elif deli=='goto':
 		return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
-	else: 
+	else:
 		return redirect('/')
 
 @app.route('/result/<count>')
 def PickRandomStore(count):
     count = int(count)
-    if(count<=3):
+    if(count<3):
         CHOICE = STORE.query.filter_by(choice='O').all()
         lenth = len(CHOICE)
         ran = random.randrange(1,lenth)
@@ -127,8 +127,8 @@ def PickRandomStore(count):
         result_choice.choice = 'X'
         db.session.commit()
     else:
-        flash('No more chance to pick lunch','error')
-    return render_template('result.html',result_choice = result_choice)
+        return render_template('dontEat.html')
+    return render_template('result.html',result_choice = result_choice, count = (count+1))
 
 
 #<매니저 모드>
