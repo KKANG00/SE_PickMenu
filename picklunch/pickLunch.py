@@ -122,10 +122,10 @@ def PickRandomStore(count):
     if(count<3):
         CHOICE = STORE.query.filter_by(choice='O').all()
         lenth = len(CHOICE)
-        ran = random.randrange(1,lenth)
+        if lenth==0:
+            return render_template('moreThanOne.html')
+        ran = random.randrange(0,lenth)
         result_choice = CHOICE[ran]
-        result_choice.choice = 'X'
-        db.session.commit()
     else:
         return render_template('dontEat.html')
     return render_template('result.html',result_choice = result_choice, count = (count+1))
