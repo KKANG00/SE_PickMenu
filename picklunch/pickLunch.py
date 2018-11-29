@@ -50,9 +50,9 @@ class MANAGER():
 		return self.password
 
 #엑셀 데이터 동기화
-#df = pd.read_csv('store_db.csv', encoding='CP949')
-#engine = create_engine('sqlite:///storedata.db')
-#df.to_sql('STORE', con=engine, if_exists='replace')
+# df = pd.read_csv('store_db.csv', encoding='CP949')
+# engine = create_engine('sqlite:///storedata.db')
+# df.to_sql('STORE', con=engine, if_exists='replace')
 
 #매니저 객체
 M=MANAGER('dnflskfk')
@@ -140,9 +140,11 @@ def Login():
 		if not request.form['password']:
 			flash('Please enter password', 'error')
 			return redirect("/")
-		if M.getpw() == request.form['password']:
+		if M.getpw()==request.form['password']:
 			return redirect("/manager")
-		return redirect("/")
+		return "비밀번호를 다시 입력하세요(뒤로 돌아가세요)"
+
+
 
 @app.route('/manager')
 def ShowInfo():
