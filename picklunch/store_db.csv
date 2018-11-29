@@ -6,7 +6,7 @@ name,address,delivery,number,category,choice
 빕스,https://store.naver.com/restaurants/detail?id=12950065,X,02-2200-1397,양식,X
 애슐리,https://store.naver.com/restaurants/detail?id=37547324,X,02-6412-1223,양식,X
 조명창고,https://store.naver.com/restaurants/detail?id=467064143,X,02-2299-5606,양식,X
-제이스 플레이트,https://store.naver.com/restaurants/detail?id=19558203,X,02-2299-6585,양식,X
+제이스_플레이트,https://store.naver.com/restaurants/detail?id=19558203,X,02-2299-6585,양식,X
 경성함바그,https://store.naver.com/restaurants/detail?id=1604012165,X,02-2200-1474,양식,X
 맥도날드,https://store.naver.com/restaurants/detail?id=11807453,O,070-7017-0469,패스트푸드,X
 KFC,https://store.naver.com/restaurants/detail?id=17901231,O,02-2200-1511,패스트푸드,X
@@ -29,14 +29,14 @@ BBQ,https://store.naver.com/restaurants/detail?id=11799792,O,0504-3142-1432,패스
 도담치킨,https://store.naver.com/restaurants/detail?id=37883042,O,02-2295-9253,패스트푸드,X
 도스마스,https://store.naver.com/restaurants/detail?id=34500898,O,02-2294-1818,패스트푸드,X
 빈스피자팩토리,NULL,X,NULL,패스트푸드,X
-만리향 양꼬치,https://store.naver.com/restaurants/detail?id=36446631,X,02-2299-0449,중식,X
+만리향_양꼬치,https://store.naver.com/restaurants/detail?id=36446631,X,02-2299-0449,중식,X
 금룡,https://store.naver.com/restaurants/detail?id=17899439,O,02-2293-7373,중식,X
 길이식당,https://store.naver.com/restaurants/detail?id=1480029997,X,02-2281-8822,중식,X
 라화쿵부,https://store.naver.com/restaurants/detail?id=1501155067,X,02-2281-3803,중식,X
 홍콩반점,https://store.naver.com/restaurants/detail?id=33167058,X,02-2293-0410,중식,X
 성화원,https://store.naver.com/restaurants/detail?id=35279525,O,02-2291-8899,중식,X
 대연각,https://store.naver.com/restaurants/detail?id=17897473,O,02-2281-8555,중식,X
-양국복 마라탕,https://store.naver.com/restaurants/detail?id=170899606,X,02-2295-4567,중식,X
+양국복_마라탕,https://store.naver.com/restaurants/detail?id=170899606,X,02-2295-4567,중식,X
 램플러스,https://store.naver.com/restaurants/detail?id=582679648,X,02-2281-0405,중식,X
 복천루,https://store.naver.com/restaurants/detail?id=17894766,O,02-2293-7056,중식,X
 한플 마라탕,NULL,X,NULL,중식,X
@@ -56,7 +56,7 @@ BBQ,https://store.naver.com/restaurants/detail?id=11799792,O,0504-3142-1432,패스
 악어떡볶이,https://store.naver.com/restaurants/detail?id=36210603,X,02-2281-9988,분식,X
 찡떡,https://store.naver.com/restaurants/detail?id=37362154,O,02-2281-9732,분식,X
 동대문엽기떡볶이,https://store.naver.com/restaurants/detail?id=37452273,O,02-6053-8592,분식,X
-바르다 김선생,https://store.naver.com/restaurants/detail?id=37555567,O,02-2296-0900,분식,X
+바르다_김선생,https://store.naver.com/restaurants/detail?id=37555567,O,02-2296-0900,분식,X
 죠스떡볶이,https://store.naver.com/restaurants/detail?id=13457772,O,02-2291-1535,분식,X
 신불떡볶이,https://store.naver.com/restaurants/detail?id=217498965,X,02-6369-1577,분식,X
 응급실국물떡볶이,https://store.naver.com/restaurants/detail?id=950263124,O,02-2298-1119,분식,X
@@ -65,13 +65,13 @@ BBQ,https://store.naver.com/restaurants/detail?id=11799792,O,0504-3142-1432,패스
 레드컵스,https://store.naver.com/restaurants/detail?id=20934009,X,NULL,분식,X
 푸른햇살49,https://store.naver.com/restaurants/detail?id=1955643797,X,02-2298-3394,분식,X
 신전떡볶이,https://store.naver.com/restaurants/detail?id=35418256,X,02-2281-1178,분식,X
-한플 김밥나라,NULL,X,NULL,분식,X
-한플 떡볶이집,NULL,X,NULL,분식,X
-싸움의 고수,https://store.naver.com/restaurants/detail?id=37921716,O,02-2296-1241,한식,X
+한플_김밥나라,NULL,X,NULL,분식,X
+한플_떡볶이집,NULL,X,NULL,분식,X
+싸움의_고수,https://store.naver.com/restaurants/detail?id=37921716,O,02-2296-1241,한식,X
 깡스,NULL,X,070-7793-6410,한식,X
 김부삼,NULL,X,02-2281-9992,한식,X
 꼬꼬아찌,https://store.naver.com/restaurants/detail?id=1155763367,X,02-2293-8567,한식,X
-다시 올 치킨,https://store.naver.com/restaurants/detail?id=18775023,X,02-2293-8979,한식,X
+다시_올_치킨,https://store.naver.com/restaurants/detail?id=18775023,X,02-2293-8979,한식,X
 한양촌,https://store.naver.com/restaurants/detail?id=17943873,O,02-2293-5238,한식,X
 비야,https://store.naver.com/restaurants/detail?id=37770187,X,NULL,한식,X
 이돈집,NULL,X,NULL,한식,X
@@ -82,20 +82,20 @@ BBQ,https://store.naver.com/restaurants/detail?id=11799792,O,0504-3142-1432,패스
 니캉내캉,https://store.naver.com/restaurants/detail?id=17899991,X,02-2281-0617,한식,X
 곱돌이네,https://store.naver.com/restaurants/detail?id=20937647,X,NULL,한식,X
 진국,https://store.naver.com/restaurants/detail?id=35485893,X,02-2299-9882,한식,X
-조씨네 고기국수,https://store.naver.com/restaurants/detail?id=280677588,X,02-2299-0423,한식,X
-일미리 금계찜닭,https://store.naver.com/restaurants/detail?id=37817876,O,02-2281-3166,한식,X
-백종원씨 돌배기집,https://store.naver.com/restaurants/detail?id=1179220390,X,NULL,한식,X
+조씨네_고기국수,https://store.naver.com/restaurants/detail?id=280677588,X,02-2299-0423,한식,X
+일미리_금계찜닭,https://store.naver.com/restaurants/detail?id=37817876,O,02-2281-3166,한식,X
+백종원씨_돌배기집,https://store.naver.com/restaurants/detail?id=1179220390,X,NULL,한식,X
 새마을식당,https://store.naver.com/restaurants/detail?id=31076851,X,02-2281-2122,한식,X
 자연별곡,https://store.naver.com/restaurants/detail?id=36220216,X,02-6454-6054,한식,X
 내가찜한닭,https://store.naver.com/restaurants/detail?id=36958604,O,02-2297-0101,한식,X
 배달돼지,https://store.naver.com/restaurants/detail?id=502014788,O,02-2295-8592,한식,X
 공씨네주먹밥,NULL,X,NULL,한식,X
-한플 순대국밥,NULL,X,NULL,한식,X
+한플_순대국밥,NULL,X,NULL,한식,X
 육앤샤,https://store.naver.com/restaurants/detail?id=36912838,X,02-2294-2020,한식,X
 아비꼬,https://store.naver.com/restaurants/detail?id=38230199,X,02-6454-6214,기타,X
 커리야,https://store.naver.com/restaurants/detail?id=38591667,X,02-2293-9990,기타,X
-타이 인 플레이트,https://store.naver.com/restaurants/detail?id=66929503,X,02-2298-0984,기타,X
+타이_인_플레이트,https://store.naver.com/restaurants/detail?id=66929503,X,02-2298-0984,기타,X
 레드올리브,https://store.naver.com/restaurants/detail?id=37398046,X,02-6454-6218,기타,X
 그릴타이,https://store.naver.com/restaurants/detail?id=33474097,X,02-2200-1488,기타,X
-한플 누들박스,https://store.naver.com/restaurants/detail?id=36193136,X,02-6454-6208,기타,X
-가까운 편의점,NULL,X,NULL,기타,X
+한플_누들박스,https://store.naver.com/restaurants/detail?id=36193136,X,02-6454-6208,기타,X
+가까운_편의점,NULL,X,NULL,기타,X
