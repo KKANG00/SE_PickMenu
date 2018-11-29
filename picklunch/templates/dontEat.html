@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css')}}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
@@ -14,19 +15,19 @@
     <style type="text/css">
 
     h1{font-size:70px; margin-top:200px; margin-left:200px; margin-bottom:30px;}
-    h2{font-size:70px; margin-top:70px; margin-left:950px;}
-    h3{font-size:100px; margin-top:70px; margin-left:400px;}
+    h2{font-size:100px; margin-top:70px; margin-left:200px}
+    h3{color:red;}
 
     .button {
-    top:200px;
-    left:1200px;
+    top:150px;
+    left:1100px;
     }
     </style>
 </head>
 
 <body>
-    <h1>기회는 3번 뿐이에요~</h1>
-    <h2 style="font-size:100px; margin-top:70px; margin-left:400px;">이럴거면 먹지마세요~</h2>
+    <h1>기회는 <span style="color: red;"><b>3번</b></span> 뿐이에요~</h1>
+    <h2>이럴거면 먹지마세요~</h2>
         <a href = "/" class="button b01">새로시작</a>
 </body>
 </html>
