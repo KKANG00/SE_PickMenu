@@ -140,7 +140,7 @@ def Login():
 		if not request.form['password']:
 			flash('Please enter password', 'error')
 			return redirect("/")
-		if M.getpw()==request.form['password']:
+		if M.getpw() == request.form['password']:
 			return redirect("/manager")
 		return redirect("/")
 
