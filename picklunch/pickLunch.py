@@ -107,9 +107,14 @@ def Select(deli, lw, name):
   db.session.commit()
   return redirect('/'+deli+'/'+lw+'/pass')
 
-@app.route('/choice')
-def MakeList():
-	return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+@app.route('/<deli>/choice')
+def MakeList(deli):
+	if deli=='deli':
+		return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O', delivery='O').order_by('category').all())
+	elif deli=='goto': 
+		return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+	else: 
+		return redirect('/')
 
 @app.route('/result/<count>')
 def PickRandomStore(count):

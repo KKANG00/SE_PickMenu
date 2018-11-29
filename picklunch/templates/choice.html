@@ -85,30 +85,20 @@ background-size: cover;
 
    <div>
 
-       <span>
-      <form class="search-bar" action="/search" method="POST">
-         <input type='text' name='string' class='input_text' placeholder='search'>
-         <a type="submit" class="fa fa-search" style = "color:#153d73; font-size: 20px"></a>
-      </form><!--검색창 form-->
-</span>
-
-
         <table class="contact_list">
 
         <thead><p style="font-weight: bold; font-size: 17px; margin-left: 30px; margin-top: 20px">랜덤돌릴까?</p><!--페이지 제목-->
 
 
         </thead>
-       <a href = "/goto/result" class="button b01">돌리기</a>
         <tbody><!--음식점목록-->
           <tr>
-              <th scop="row" style="background: #f5f5f5">&nbsp;&nbsp;<i class="fa fa-heart" style="color:#ff0033"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름</th>
+              <th scop="row" style="background: #f5f5f5">&nbsp;&nbsp;이름</th>
               <td style="background:#f5f5f5;font-weight: bold">분류</td> </tr>
 
 
               {%- for i in CHOICE %} <!--음식점 목록의 개수만큼 반복-->
               <th scope="row">
-             <a href="/choice"  title = "{{i.choice}}" class="fa fa-heart-o" style="color :#ff0033" name="favoriticon"> </a>
               <a href = "#{{i.name}}" class="btn-example" onclick="layer_open('{{i.name}}'); return false;" > {{i.name }}</a>
               <div id="{{i.name}}" class="pop-layer" ><!--이름을 누르면 음식점를 자세하게 볼 수 있다-->
                    <div class="pop-container">
@@ -130,6 +120,7 @@ background-size: cover;
        {%- endfor %}
        </tbody>
       </table>
+      <a href = "/result/0" class="button b01" style="bottom: 65px; left: 800px">돌리기</a>
    </div>
 
 </main>
