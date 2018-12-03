@@ -148,9 +148,7 @@ def Login():
 			return redirect("/")
 		if M.getpw()==request.form['password']:
 			return redirect("/manager")
-		return "비밀번호를 다시 입력하세요 (뒤로 돌아가세요)"
-
-
+		return "비밀번호가 일치하지 않습니다. 뒤로 돌아가서 다시 입력하세요"
 
 @app.route('/manager')
 def ShowInfo():
@@ -161,7 +159,7 @@ def AddInfo():
     if request.method == 'POST':
        #빈칸 입력시 추가되지 않음
        if not request.form['name']:
-          flash('Please enter all the fields', 'error')
+          return "음식점 이름은 필수입력사항입니다. 뒤로 돌아가서 다시 입력하세요."
        else:
           #입력받은 정보를 받아와서 연락처 추가
           NEW=STORE(request.form['name'],request.form['address'],request.form['delivery'],request.form['number'],request.form['category'])
