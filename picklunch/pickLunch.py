@@ -18,7 +18,7 @@ db=SQLAlchemy(app)
 #데이터 베이스 테이블 생성
 class STORE(db.Model):
    #id=db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
-   name=db.Column(db.String(100),primary_key=True, nullable=False, default='')
+   name=db.Column(db.String(100), primary_key=True, nullable=False, default='')
    number=db.Column(db.String(100), nullable=True, default='')
    address=db.Column(db.String(100), nullable=True, default='')
    category=db.Column(db.String(100), nullable=True, default='')
@@ -35,19 +35,19 @@ class STORE(db.Model):
       self.delivery=delivery
 
    def SetStore(ox):
-   	  STORE_=STORE.query.all()
-   	  for i in STORE_:
-   	  	i.choice=ox
-   	  db.session.commit()
+        STORE_=STORE.query.all()
+        for i in STORE_:
+           i.choice=ox
+        db.session.commit()
 
 class MANAGER():
-	password = 'dnflskfk'
+   password = 'dnflskfk'
 
-	def __init__(self, password):
-		self.password=password
+   def __init__(self, password):
+      self.password=password
 
-	def getpw(self):
-		return self.password
+   def getpw(self):
+      return self.password
 
 #엑셀 데이터 동기화
 #df = pd.read_csv('store_db.csv', encoding='CP949')
@@ -61,41 +61,41 @@ M=MANAGER('dnflskfk')
 #메인화면루트
 @app.route('/')
 def SetUserDelivery():
-	STORE.SetStore('X')
-	return render_template('howToEat.html')
-	#return render_template('list.html',STORELIST=STORE.query.order_by('category').all())
+   STORE.SetStore('X')
+   return render_template('howToEat.html')
+   #return render_template('list.html',STORELIST=STORE.query.order_by('category').all())
 
 #<사용자 모드>
 
 #식사방법고르기
 @app.route('/<howtoeat>/howtochoose')
 def SetUertChoice(howtoeat):
-	if(howtoeat=='delivery'):
-		return render_template('howToChoose_deli.html')
-	elif(howtoeat=='goto'):
-		return render_template('howToChoose_goto.html')
+   if(howtoeat=='delivery'):
+      return render_template('howToChoose_deli.html')
+   elif(howtoeat=='goto'):
+      return render_template('howToChoose_goto.html')
 
 #선택방법고르기
 @app.route('/<eat>/<choose>/<check>')
 def fourcases(eat, choose, check):
-	if(eat=='goto'):
-		if(choose=='like'):
-			if check=='reset':
-				STORE.SetStore('X')
-			return render_template('listgl.html', STORELIST=STORE.query.order_by('category').all())
-		elif(choose=='without'):
-			if check=='reset':
-				STORE.SetStore('O')
-			return render_template('listgw.html', STORELIST=STORE.query.order_by('category').all())
-	elif(eat=='delivery'):
-		if(choose=='like'):
-			if check=='reset':
-				STORE.SetStore('X')
-			return render_template('listdl.html', STORELIST=STORE.query.order_by('category').filter_by(delivery='O').all())
-		elif(choose=='without'):
-			if check=='reset':
-				STORE.SetStore('O')
-			return render_template('listdw.html', STORELIST=STORE.query.order_by('category').filter_by(delivery='O').all())
+   if(eat=='goto'):
+      if(choose=='like'):
+         if check=='reset':
+            STORE.SetStore('X')
+         return render_template('listgl.html', STORELIST=STORE.query.order_by('category').all())
+      elif(choose=='without'):
+         if check=='reset':
+            STORE.SetStore('O')
+         return render_template('listgw.html', STORELIST=STORE.query.order_by('category').all())
+   elif(eat=='delivery'):
+      if(choose=='like'):
+         if check=='reset':
+            STORE.SetStore('X')
+         return render_template('listdl.html', STORELIST=STORE.query.order_by('category').filter_by(delivery='O').all())
+      elif(choose=='without'):
+         if check=='reset':
+            STORE.SetStore('O')
+         return render_template('listdw.html', STORELIST=STORE.query.order_by('category').filter_by(delivery='O').all())
 
 @app.route('/choice/<deli>/<lw>/<name>')
 def Select(deli, lw, name):
@@ -109,20 +109,12 @@ def Select(deli, lw, name):
 
 @app.route('/<deli>/choice')
 def MakeList(deli):
-	if deli=='deli':
-		CHOICE=STORE.query.filter_by(choice='O', delivery='O').order_by('category').all()
-		lenth = len(CHOICE)
-		if lenth==0:
-			return render_template('moreThanOne.html')
-		return render_template('choice.html',CHOICE=CHOICE)
-	elif deli=='goto':
-		CHOICE=STORE.query.filter_by(choice='O').order_by('category').all()
-		lenth = len(CHOICE)
-		if lenth==0:
-			return render_template('moreThanOne.html')
-		return render_template('choice.html',CHOICE=CHOICE)
-	else:
-		return redirect('/')
+   if deli=='deli':
+      return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O', delivery='O').order_by('category').all())
+   elif deli=='goto':
+      return render_template('choice.html',CHOICE=STORE.query.filter_by(choice='O').order_by('category').all())
+   else:
+      return redirect('/')
 
 @app.route('/result/<count>')
 def PickRandomStore(count):
@@ -130,6 +122,8 @@ def PickRandomStore(count):
     if(count<3):
         CHOICE = STORE.query.filter_by(choice='O').all()
         lenth = len(CHOICE)
+        if lenth==0:
+            return render_template('moreThanOne.html')
         ran = random.randrange(0,lenth)
         result_choice = CHOICE[ran]
     else:
@@ -142,24 +136,26 @@ def PickRandomStore(count):
 #로그인루트
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
-	if request.method == 'POST':
-		if not request.form['password']:
-			flash('Please enter password', 'error')
-			return redirect("/")
-		if M.getpw()==request.form['password']:
-			return redirect("/manager")
-		return "비밀번호가 일치하지 않습니다. 뒤로 돌아가서 다시 입력하세요"
+   if request.method == 'POST':
+      if not request.form['password']:
+         flash('Please enter password', 'error')
+         return redirect("/")
+      if M.getpw()==request.form['password']:
+         return redirect("/manager")
+      return "비밀번호가 일치하지 않습니다. 뒤로 가서 다시 입력하세요."
+
+
 
 @app.route('/manager')
 def ShowInfo():
-	return render_template('manage_list.html', STORELIST=STORE.query.order_by('category').all())
+   return render_template('manage_list.html', STORELIST=STORE.query.order_by('category').all())
 
 @app.route('/new', methods=['GET', 'POST'])
 def AddInfo():
     if request.method == 'POST':
        #빈칸 입력시 추가되지 않음
        if not request.form['name']:
-          return "음식점 이름은 필수입력사항입니다. 뒤로 돌아가서 다시 입력하세요."
+          return "음식점 이름은 필수 입력사항입니다. 뒤로 가서 다시 입력하세요."
        else:
           #입력받은 정보를 받아와서 연락처 추가
           NEW=STORE(request.form['name'],request.form['address'],request.form['delivery'],request.form['number'],request.form['category'])
@@ -169,19 +165,23 @@ def AddInfo():
 
 @app.route('/delete/<name>')
 def DeleteInfo(name):
-	deleted=STORE.query.filter_by(name=name)
-	deleted.delete()
-	db.session.commit()
-	return redirect('/manager')
+   deleted=STORE.query.filter_by(name=name)
+   deleted.delete()
+   db.session.commit()
+   return redirect('/manager')
 
 @app.route('/edit/<name>', methods=['POST'])
 def ChangeInfo(name):
    edited=STORE.query.get(name)
+
+   if not request.form['name']:
+          return "음식점 이름은 필수 입력사항입니다. 뒤로 가서 다시 입력하세요."
+          
    edited.name=request.form['name']
    edited.number=request.form['number']
-   edited.email=request.form['delivery']
-   edited.email=request.form['address']
-   edited.email=request.form['category']
+   edited.delivery=request.form['delivery']
+   edited.address=request.form['address']
+   edited.category=request.form['category']
    db.session.commit()
    return redirect('/manager')
 
