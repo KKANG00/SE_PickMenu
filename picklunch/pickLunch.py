@@ -147,7 +147,7 @@ def Login():
 
 
 @app.route('/manager')
-def ShowInfo():
+def ShowManageList():
    return render_template('manage_list.html', STORELIST=STORE.query.order_by('category').all())
 
 @app.route('/new', methods=['GET', 'POST'])
@@ -176,7 +176,7 @@ def ChangeInfo(name):
 
    if not request.form['name']:
           return "음식점 이름은 필수 입력사항입니다. 뒤로 가서 다시 입력하세요."
-          
+
    edited.name=request.form['name']
    edited.number=request.form['number']
    edited.delivery=request.form['delivery']
