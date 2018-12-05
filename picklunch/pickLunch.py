@@ -147,7 +147,7 @@ def Login():
 
 
 @app.route('/manager')
-def ShowManageList():
+def ShowList():
    return render_template('manage_list.html', STORELIST=STORE.query.order_by('category').all())
 
 @app.route('/new', methods=['GET', 'POST'])
